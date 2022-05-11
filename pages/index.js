@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import { Fotter } from '../components/Fotter'
-import { Main } from '../components/Main'
+import { Fotter } from '../components/Fotter/Fotter'
+import { Main } from '../components/Main/Main'
 
 export default function Home() {
   return (
