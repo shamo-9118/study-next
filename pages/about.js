@@ -3,6 +3,8 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { Fotter } from '../components/Fotter'
 import { Links } from '../components/Links'
+import { Headline } from '../components/Headline'
+
 export default function About() {
   return (
     <div className={styles.container}>
@@ -13,9 +15,7 @@ export default function About() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          About!! <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <Headline title="about"/>
         <Links/>
       </main>
 
