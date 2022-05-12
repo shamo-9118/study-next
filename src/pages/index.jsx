@@ -10,10 +10,11 @@ export default function Home() {
   const [count,setCount] = useState(40)
   const [text,setText] = useState()
   const [isShow,setIsShow] = useState(true)
+  const [arry, setArry] =useState([])
 
   const handleClick = useCallback(() =>{
     if(foo < 20){
-      setFoo(foo=>foo+1);
+      setFoo((prevfoo)=>prevfoo+1);
     }
   },[foo])
 
@@ -26,13 +27,22 @@ export default function Home() {
   const handleChange = useCallback((e)=>{
     setText(e.target.value.trim())
   },[]);
-  
+
   const handleDisplay = useCallback(()=>{
-    setIsShow((isShow) => {
-      return !isShow
+    setIsShow((previsShow) => {
+      return !previsShow
     }
 )
   },[])
+
+  const handleAdd = useCallback(()=>{
+    setArry((prevArry)=>{
+      if(prevArry.some(item=> item === text)){
+        alert("同じ要素が既に存在します。")
+      }
+      return [...prevArry, 1];
+    })
+  },[text])
 
   return (
     <div className={styles.container}>
@@ -44,6 +54,12 @@ export default function Home() {
       {isShow ? <h1>{foo}</h1> : null}
       <button onClick={handleClick}>ボタンですよ</button>
       <button onClick={handleDisplay}>{isShow ? "非表示" : "表示"}</button>
+      <button onClick={handleAdd}>追加</button>
+      <ul>
+        {arry.map((item)=>{
+          return <li key={item}>{item}</li>;
+        })}
+      </ul>
       <input type="text" value={text} onChange={handleChange}/>
       <Main page="index"/>
       <Fotter/>
